@@ -1,24 +1,21 @@
 class EmpWage {
 
-   public static void main(String[] args) {
-
-   System.out.println(" Welcome to Employeee Wage Computation ");
-
    //constants
-   int isFullTime=1;
-   int empRatePerHour=20;
+   public static final int isFullTime=1;
+   public static final int isPartTime=2;
+   public static final int empRatePerHour=20;
 
+   public static void main(String[] args) {
+  System.out.println(" Welcome to Employeee Wage Computation ");
    //variables
    int empHrs=0;
    int empWage=0;
-   double empCheck = Math.floor(Math.random()*10)%2;
-   if( empCheck == isFullTime){
-      System.out.println("Employee Present");
-   empHrs=8;
-      }
-   else {
-      System.out.println("Employee Absent");
-      empHrs=0;
+   //computation
+   int empCheck = (int)Math.floor(Math.random()*10)%3;
+   switch ( empCheck){
+               case isFullTime : empHrs=8; break;
+               case isPartTime : empHrs=4; break;
+               default :         empHrs=0; break;
       }
       empWage = empHrs*empRatePerHour;
       System.out.println("Emp Wage = "+empWage);
