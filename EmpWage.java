@@ -2,11 +2,8 @@ class EmpWage {
    //constants
    public static final int isFullTime=1;
    public static final int isPartTime=2;
-   public static final int empRatePerHour=20;
-   public static final int totalWorkingDays=20;
-   public static final int maxHrs=100;
 
-   void EmpSalary() {
+   public static void EmpSalary(String company,int empRatePerHour,int totalWorkingDays,int maxHrs) {
    //variables
    int empHrs=0;
    int empWage=0;
@@ -27,12 +24,12 @@ class EmpWage {
       }
        totalEmpWage=totalEmpHrs*empRatePerHour;
 
-      System.out.println("Total Emp Wage = "+totalEmpWage);
+      System.out.println("Total Emp Wage for company : " + company+" = "+totalEmpWage);
    }
    public static void main(String[] args) {
 
          System.out.println(" Welcome to Employeee Wage Computation ");
-         EmpWage e = new EmpWage();
-         e.EmpSalary();
+			EmpSalary("BigBazar",20,2,10);
+			EmpSalary("Ratnadeep",15,2,12);
       }
 }
