@@ -22,13 +22,13 @@ public class EmpWageBuilder implements EmpWageInterface {
 	}
 
 	public void computeEmpWage(){
-	for(int i=0;i<numOfCompany;i++)
+	for(int i=0;i<empWageList.size();i++)
 		{
-		companyEmpWage companyEmployeeWage=empWageList.get(i);
-		companyEmployeeWage.setTotalEmpWage(this.computeEmpWage(companyEmployeeWage));
-}
-		System.out.println(empWageList);
+		companyEmpWage companyEmpWage=empWageList.get(i);
+		companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
 
+		System.out.println(companyEmpWage);
+}
 }
 
 	public int computeEmpWage(companyEmpWage companyEmpWage){
