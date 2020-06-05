@@ -1,30 +1,35 @@
+import java.util.*;
+
 public class EmpWageBuilder implements EmpWageInterface {
    //constants
    public static final int isFullTime=1;
    public static final int isPartTime=2;
 
-
-	private int numOfCompany = 0;
-	private companyEmpWage[] companyEmpWageArray;
+	int numOfCompany;
+	private ArrayList<companyEmpWage> empWageList;
 
 	public EmpWageBuilder() {
 
-		companyEmpWageArray =new companyEmpWage[5];
+		empWageList =new ArrayList<>();
 
 	}
 
   public void addCompanyEmpWage(String company,int empRatePerHour,int totalWorkingDays,int maxHrs) {
 
 
-		companyEmpWageArray[numOfCompany] = new companyEmpWage(company,empRatePerHour,totalWorkingDays,maxHrs);
-		numOfCompany++;
+		companyEmpWage companyEmployeeWage = new companyEmpWage(company,empRatePerHour,totalWorkingDays,maxHrs);
+	empWageList.add(companyEmployeeWage);
 	}
 
 	public void computeEmpWage(){
-	for(int i=0;i<numOfCompany;i++) {
-		companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-		System.out.println(companyEmpWageArray[i]);
+	for(int i=0;i<numOfCompany;i++)
+		{
+		companyEmpWage companyEmployeeWage=empWageList.get(i);
+		companyEmployeeWage.setTotalEmpWage(this.computeEmpWage(companyEmployeeWage));
+
 		}
+//		System.out.println(empWageList);
+
 }
 
 
@@ -54,7 +59,7 @@ public class EmpWageBuilder implements EmpWageInterface {
    public static void main(String[] args) {
 
          System.out.println(" Welcome to Employeee Wage Computation ");
-			EmpWageBuilder empBuilder=new EmpWageBuilder();
+			EmpWageInterface empBuilder=new EmpWageBuilder();
 			empBuilder.addCompanyEmpWage("Dmart",20,5,40);
 			empBuilder.addCompanyEmpWage("Reliance",10,4,30);
 			empBuilder.computeEmpWage();
