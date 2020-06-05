@@ -4,10 +4,11 @@ public class EmpWageBuilder implements EmpWageInterface {
    //constants
    public static final int isFullTime=1;
    public static final int isPartTime=2;
-	int totalEmpWage;
-	int numOfCompany;
+//	int totalEmpWage;
+	private	int numOfCompany=0;
 	private LinkedList<companyEmpWage> empWageList;
 	private Map<String, companyEmpWage> companyMap;
+
 	public EmpWageBuilder() {
 
 		empWageList =new LinkedList<companyEmpWage>();
@@ -19,17 +20,17 @@ public class EmpWageBuilder implements EmpWageInterface {
 
 
 		companyEmpWage companyEmployeeWage = new companyEmpWage(company,empRatePerHour,totalWorkingDays,maxHrs);
-	empWageList.add(companyEmployeeWage);
-	companyMap.put(company,companyEmployeeWage);
+		empWageList.add(companyEmployeeWage);
+		companyMap.put(company,companyEmployeeWage);
 	}
 
 	public void computeEmpWage(){
-	for(int i=0;i<numOfCompany;i++)
+	for(int i=0;i<empWageList.size();i++)
 		{
 		companyEmpWage companyEmpWage=empWageList.get(i);
 		companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
 //		System.out.println(companyMap.get(companyEmpWage.COMPANY));
-		System.out.println(empWageList);
+		System.out.println(companyEmpWage);
 }
 }
 

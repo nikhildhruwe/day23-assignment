@@ -23,7 +23,7 @@ public class companyEmpWage{
 
    public String toString(){
 
-      return ("Total Emp Wage for Company : "+company+" is ="+totalEmpWage);
+      return "Total Emp Wage for Company : "+company+" is ="+totalEmpWage;
    }
 
 }
