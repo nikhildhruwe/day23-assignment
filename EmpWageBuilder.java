@@ -24,12 +24,11 @@ public class EmpWageBuilder implements EmpWageInterface {
 	}
 
 	public void computeEmpWage(){
-	for(int i=0;i<numOfCompany;i++)
+	for(int i=0;i<empWageList.size();i++)
 		{
 		companyEmpWage companyEmpWage=empWageList.get(i);
 		companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
-//		System.out.println(companyMap.get(companyEmpWage.COMPANY));
-		System.out.println(empWageList);
+		System.out.println(companyEmpWage);
 }
 }
 
