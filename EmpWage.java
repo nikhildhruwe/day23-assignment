@@ -1,7 +1,4 @@
-class EmpWage {
-   //constants
-   public static final int isFullTime=1;
-   public static final int isPartTime=2;
+public class companyEmpWage{
 
 	private final String company;
 	private final int empRatePerHour;
@@ -9,15 +6,43 @@ class EmpWage {
 	private final int maxHrs;
 	private int totalEmpWage;
 
-   public EmpWage(String company,int empRatePerHour,int totalWorkingDays,int maxHrs) {
 
-		this.company=company;
-		this.totalWorkingDays=totalWorkingDays;
-		this.maxHrs=maxHrs;
-		this.empRatePerHour=empRatePerHour;
+}
+class EmpWageBuilder {
+   //constants
+   public static final int isFullTime=1;
+   public static final int isPartTime=2;
+
+
+	int numOfCompany = 0;
+	private companyEmpWage[] companyEmpWageArray;
+
+	public EmpWageBuilder() {
+
+		companyEmpWageArray =new companyEmpWage[5];
+
+}
+
+  private void addCompanyEmpWage(String company,int empRatePerHour,int totalWorkingDays,int maxHrs) {
+
+
+		compayEmpWageArray[numOfCompany] = new companyEmpWage(company,empRatePerHour,totalWorkingDays,maxHrs);
+		numOfCompany++;
 	}
 
-	public void computeEmpWage(){
+	private void computeEmpWage(){
+	for(int i=0;i<numOfCompany;i++) {
+		companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpArray[i]));
+		System.print.out.ln(companyEmpWageArray[i]);
+		}
+}
+
+public void setTotalEmpWage(int totalEmpWage){
+
+		this.totalEmpWage=totalEmpWage;
+}
+
+	public int computeEmpWage(companyEmpWage companyEmpWage){
    //variables
    int empHrs=0;
    int empWage=0;
@@ -48,11 +73,9 @@ class EmpWage {
    public static void main(String[] args) {
 
          System.out.println(" Welcome to Employeee Wage Computation ");
-			EmpWage bigBazar=new EmpWage("bigBazar",20,5,40);
-			EmpWage dMart=new EmpWage("D-Mart",15,5,30);
-			bigBazar.computeEmpWage();
-			System.out.println(bigBazar);
-			dMart.computeEmpWage();
-			System.out.println(dMart);
+			EmpWageBuilder empBuilder=new EmpWageBuilder();
+			empBuilder.addCompanyEmpWage("Dmart",20,5,40);
+			empBuilder.addCompanyEmpWage("Reliance",10,4,30);
+			empBuilder.computeEmpWage();
       }
 }
