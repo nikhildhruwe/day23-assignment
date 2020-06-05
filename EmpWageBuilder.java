@@ -26,12 +26,10 @@ public class EmpWageBuilder implements EmpWageInterface {
 		{
 		companyEmpWage companyEmployeeWage=empWageList.get(i);
 		companyEmployeeWage.setTotalEmpWage(this.computeEmpWage(companyEmployeeWage));
-
-		}
-//		System.out.println(empWageList);
+}
+		System.out.println(empWageList);
 
 }
-
 
 	public int computeEmpWage(companyEmpWage companyEmpWage){
    //variables
