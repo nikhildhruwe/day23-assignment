@@ -13,6 +13,7 @@ public class companyEmpWage{
       this.totalWorkingDays=totalWorkingDays;
       this.maxHrs=maxHrs;
       this.empRatePerHour=empRatePerHour;
+		totalEmpWage=0;
    }
 
    public void setTotalEmpWage(int totalEmpWage){

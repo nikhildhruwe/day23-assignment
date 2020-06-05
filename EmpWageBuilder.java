@@ -4,13 +4,14 @@ public class EmpWageBuilder implements EmpWageInterface {
    //constants
    public static final int isFullTime=1;
    public static final int isPartTime=2;
-
+	int totalEmpWage;
 	int numOfCompany;
-	private ArrayList<companyEmpWage> empWageList;
-
+	private LinkedList<companyEmpWage> empWageList;
+	private Map<String, companyEmpWage> companyMap;
 	public EmpWageBuilder() {
 
-		empWageList =new ArrayList<>();
+		empWageList =new LinkedList<companyEmpWage>();
+		companyMap=new HashMap<String,companyEmpWage>();
 
 	}
 
@@ -19,17 +20,23 @@ public class EmpWageBuilder implements EmpWageInterface {
 
 		companyEmpWage companyEmployeeWage = new companyEmpWage(company,empRatePerHour,totalWorkingDays,maxHrs);
 	empWageList.add(companyEmployeeWage);
+	companyMap.put(company,companyEmployeeWage);
 	}
 
 	public void computeEmpWage(){
 	for(int i=0;i<numOfCompany;i++)
 		{
-		companyEmpWage companyEmployeeWage=empWageList.get(i);
-		companyEmployeeWage.setTotalEmpWage(this.computeEmpWage(companyEmployeeWage));
-}
+		companyEmpWage companyEmpWage=empWageList.get(i);
+		companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
+//		System.out.println(companyMap.get(companyEmpWage.COMPANY));
 		System.out.println(empWageList);
-
 }
+}
+
+	public int getTotalWage(String company){
+
+	return companyMap.get(company).totalEmpWage;
+	}
 
 	public int computeEmpWage(companyEmpWage companyEmpWage){
    //variables
@@ -61,5 +68,7 @@ public class EmpWageBuilder implements EmpWageInterface {
 			empBuilder.addCompanyEmpWage("Dmart",20,5,40);
 			empBuilder.addCompanyEmpWage("Reliance",10,4,30);
 			empBuilder.computeEmpWage();
-      }
+			System.out.println("Monthly Employee wage of Dmart is Rs. "+empBuilder.getTotalWage("Dmart"));
+			System.out.println("Monthly Employee wage of Relience Fresh is Rs. "+empBuilder.getTotalWage("Reliance"));
+     }
 }
